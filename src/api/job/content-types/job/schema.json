@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "singularName": "job",
+    "pluralName": "jobs",
+    "displayName": "Job"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "jobTitle": {
+      "type": "string",
+      "required": true
+    },
+    "salaryRange": {
+      "type": "string",
+      "required": true
+    },
+    "jobType": {
+      "type": "enumeration",
+      "enum": [
+        "Full-time",
+        "Part-time",
+        "Contract"
+      ]
+    },
+    "workplace": {
+      "type": "enumeration",
+      "enum": [
+        "Remote",
+        "Hybrid",
+        "On-site"
+      ]
+    },
+    "seniority": {
+      "type": "enumeration",
+      "enum": [
+        "Entry-Level",
+        "Mid-Level",
+        "Senior",
+        "Manager",
+        "Director",
+        "Executive"
+      ]
+    },
+    "benefits": {
+      "type": "component",
+      "component": "shared.text-array",
+      "repeatable": true
+    },
+    "aboutRole": {
+      "type": "component",
+      "component": "shared.text-array",
+      "repeatable": true
+    },
+    "whatWeDo": {
+      "type": "component",
+      "component": "shared.text-array",
+      "repeatable": true
+    },
+    "waysToWork": {
+      "type": "component",
+      "component": "shared.text-array",
+      "repeatable": true
+    },
+    "company": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company",
+      "inversedBy": "jobs"
+    },
+    "applications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::application.application",
+      "mappedBy": "job"
+    }
+  }
+}

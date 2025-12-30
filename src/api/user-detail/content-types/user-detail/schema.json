@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_details",
+  "info": {
+    "singularName": "user-detail",
+    "pluralName": "user-details",
+    "displayName": "UserDetail"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "resume": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_detail"
+    }
+  }
+}
